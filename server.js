@@ -24,7 +24,9 @@ app.get('/dreamly', (req, res) => {
 });
 
 // Index
-app.get('/dreamly/logs0')
+app.get('/dreamly/logs', (req, res) => {
+    res.send('this is where logged dreams will go!');
+})
 
 
 // Listen

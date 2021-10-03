@@ -1,9 +1,11 @@
 // Dependencies
 require('dotenv').config();
 const express = require('express');
+const methodOverride = require('method-override');
 const app = express();
 const mongoose = require('mongoose');
-const PORT = 5000
+const dream = require('./models/dreams');
+const PORT = 3000
 
 // Mongoose Database Connection //
 mongoose.connect(process.env.DATABASE_URL, {
@@ -28,8 +30,13 @@ app.get('/dreamly/logs', (req, res) => {
     res.send('this is where logged dreams will go!');
 })
 
+// NEW
+app.get('/dreamly/newlog', (req, res) => {
+    res.send('this is where new logs will be created!')
+})
+
 
 // Listen
 app.listen(PORT, () => {
-    console.log("I'm listening to what Josie said on port:", PORT);
+    console.log(`I can hear it..is that port ${PORT}?`);
 })

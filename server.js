@@ -1,4 +1,4 @@
-// Dependencies
+// Dependencies //
 require('dotenv').config();
 const express = require('express');
 const methodOverride = require('method-override');
@@ -13,7 +13,7 @@ mongoose.connect(process.env.DATABASE_URL, {
     useUnifiedTopology: true
 });
 
-//Database connection error/success, defined callback functions for various events
+// Database connection error/success, defined callback functions for various events //
 const db = mongoose.connection
 db.on('error', (err) => console.log(err.message + ' is mongo not running?'));
 db.on('connected', () => console.log('mongo connected'));
@@ -25,18 +25,25 @@ app.get('/dreamly', (req, res) => {
     res.render('home.ejs');
 });
 
-// Index
+// Index route
 app.get('/dreamly/logs', (req, res) => {
-    res.send('this is where logged dreams will go!');
+    res.render('index.ejs');
 })
 
-// NEW
+// New route
 app.get('/dreamly/newlog', (req, res) => {
-    res.send('this is where new logs will be created!')
+    res.render('newlog.ejs');
 })
 
+// Show route
 
-// Listen
+
+// Delete route
+
+//Edit route
+
+
+// Listen //
 app.listen(PORT, () => {
     console.log(`I can hear it..is that port ${PORT}?`);
 })

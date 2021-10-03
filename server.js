@@ -4,7 +4,7 @@ const express = require('express');
 const methodOverride = require('method-override');
 const app = express();
 const mongoose = require('mongoose');
-const dream = require('./models/dreams');
+const dreams = require('./models/dreams.js');
 const PORT = 3000
 
 // Mongoose Database Connection //
@@ -19,15 +19,29 @@ db.on('error', (err) => console.log(err.message + ' is mongo not running?'));
 db.on('connected', () => console.log('mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
+// Middleware //
+app.use((req, res, next) => {
+    console.log('Middleware active');
+    next();
+})
+app.use(express.urlencoded({ extended: false}));
+app.use(methodOverride('_method'));
 
-//Routes
+//Routes //
 app.get('/dreamly', (req, res) => {
     res.render('home.ejs');
 });
 
+//Route handler
+app.post
+
 // Index route
 app.get('/dreamly/logs', (req, res) => {
-    res.render('index.ejs');
+    dreams.find({}, (error, allDreams) => {
+        res.render('index.ejs', {
+            allDreams: dreams,
+        })
+    })
 })
 
 // New route
@@ -35,13 +49,33 @@ app.get('/dreamly/newlog', (req, res) => {
     res.render('newlog.ejs');
 })
 
-// Show route
+// Create route
+app.post('/dreamly/logs', (req, res) => {
+    if (req.body.completed === 'on') {
+        req.body.completed = true;
+    } else {
+        req.body.completed = false;
+    }
+    dreams.create(req.body, (error, createdDream) => {
+        res.redirect('/dreamly/logs');
+    });
+});
 
+// Show route
+app.get('/dreamly/logs/:indexOfDreamsArray', (req, res) => {
+    res.render('show.ejs', {allDreams: dreams[req.params.indexOfDreamsArray]})
+})
 
 // Delete route
+app.delete('/dreamly/logs/:indexOfDreamsArray', (req, res) => {
+    dreams.splice(req.params.indexOfDreamsArray, 1);
+    res.redirect('/dreamly/logs');
+})
 
 //Edit route
-
+app.get('/dreamly/logs/:indexOfDreamsArray/edit', (req, res) => {
+    res.render('editlog.ejs')
+})
 
 // Listen //
 app.listen(PORT, () => {

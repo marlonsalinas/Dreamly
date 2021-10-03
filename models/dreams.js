@@ -8,7 +8,7 @@ const dreamSchema = new mongoose.Schema({
     emotions: {type: String, required: false}
 });
 
-const dream = mongoose.model('dream', dreamSchema);
+const dreams = mongoose.model('dreams', dreamSchema);
 
 // Export dream to have access to it across app
-module.exports = dream;
+module.exports = dreams;

@@ -3,11 +3,11 @@ require('dotenv').config();
 const express = require('express');
 const methodOverride = require('method-override');
 const app = express();
-const mongoose = require('mongoose');
 const dreams = require('./models/dreams.js');
 const PORT = 3000
 
 // Mongoose Database Connection //
+const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
     console.log('Middleware active');
     next();
 })
-app.use(express.urlencoded({ extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 
 //Routes //
@@ -37,16 +37,20 @@ app.post
 
 // Index route
 app.get('/dreamly/logs', (req, res) => {
-    dreams.find({}, (error, allDreams) => {
-        res.render('index.ejs', {
-            allDreams: dreams,
-        })
-    })
-})
+    dreams.find({}, (error, foundDreams) => {
+        res.send(foundDreams);
+    });
+});
 
 // New route
 app.get('/dreamly/newlog', (req, res) => {
     res.render('newlog.ejs');
+})
+
+// Delete route
+app.delete('/dreamly/logs/:indexOfDreamsArray', (req, res) => {
+    dreams.splice(req.params.indexOfDreamsArray, 1);
+    res.redirect('/dreamly/logs');
 })
 
 // Create route
@@ -57,20 +61,17 @@ app.post('/dreamly/logs', (req, res) => {
         req.body.completed = false;
     }
     dreams.create(req.body, (error, createdDream) => {
-        res.redirect('/dreamly/logs');
+        res.send(createdDream);
+        // res.redirect('/dreamly/logs');
     });
 });
+
 
 // Show route
 app.get('/dreamly/logs/:indexOfDreamsArray', (req, res) => {
     res.render('show.ejs', {allDreams: dreams[req.params.indexOfDreamsArray]})
 })
 
-// Delete route
-app.delete('/dreamly/logs/:indexOfDreamsArray', (req, res) => {
-    dreams.splice(req.params.indexOfDreamsArray, 1);
-    res.redirect('/dreamly/logs');
-})
 
 //Edit route
 app.get('/dreamly/logs/:indexOfDreamsArray/edit', (req, res) => {

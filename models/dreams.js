@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 // Data scheme
-const dreamSchema = new mongoose.Schema({
+const dreamSchema = new Schema({
     nightOf: {type: Date, required: true},
     setting: {type: String, required: false},
     description: {type: String, required: true},

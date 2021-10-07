@@ -9,9 +9,9 @@
 <body>
     <h1>List of logs</h1>
     <ul>
-        <% for(let i = 0; i < allDreams.length; i++) { %>
+        <% for(let i = 0; i < dreams.length; i++) { %>
             <li>
-                <a href='/dreamly/logs/<%= i %>'><%= allDreams.nightOf%></a>
+                <a href='/dreamly/logs/<%= dreams[i]._id %>'><%= dreams[i].nightOf %></a>
             </li>
         <% } %>
     </ul>

@@ -10,9 +10,7 @@ const PORT = 3000
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    // useFindAndModify: false,
-    // useCreateIndex: true,
+    useUnifiedTopology: true
 });
 const db = mongoose.connection
 
@@ -26,7 +24,7 @@ app.use((req, res, next) => {
     console.log('Middleware active');
     next();
 })
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 //Routes //

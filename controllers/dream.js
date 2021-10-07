@@ -22,26 +22,28 @@ router.get('/dreamly/newlog', (req, res) => {
 });
 
 // Delete Route
-router.delete('/dreamly/logs', (req, res) => {
-    dreams.findByIdAndDelete(req.params.id, (error, deleteDreams) => {
-        res.send({ success: true });
+router.delete('/dreamly/logs/:id', (req, res) => {
+    dreams.findByIdAndRemove(req.params.id, (error, deleteDreams) => {
+        res.redirect('/dreamly/logs');
     });
 });
 
 // Update Route
 router.put('/dreamly/logs/:id', (req, res) => {
     dreams.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        { new: true },
-        (error, updatedDreams) => {
-            res.send(updatedDreams);
-        }
-    );
+        req.params.id, req.body, () => {
+            res.redirect('/dreamly/logs');
+        });
 });
 
 // Create route
 router.post('/dreamly/logs', (req, res) => {
+    if (req.body.completed === 'on') {
+        req.body.completed = true;
+    } else {
+        req.body.completed = false;
+    }
+    
     dreams.create(req.body, (error, createdDream) => {
         res.redirect('/dreamly/logs');
     });
@@ -49,14 +51,17 @@ router.post('/dreamly/logs', (req, res) => {
 
 //Edit route
 router.get('/dreamly/logs/:id/edit', (req, res) => {
-    res.render('editlog.ejs')
-})
+    dreams.findById(req.params.id, (error, foundDreams) => {
+        res.render('editlog.ejs', {
+            dreams: foundDreams
+        });
+    });
+});
 
 // Show route
 router.get('/dreamly/logs/:id', (req, res) => {
     dreams.findById(req.params.id, (error, foundDreams) => {
-        // res.send(foundDreams);
-        res.redirect('show.ejs');
+        res.render('show.ejs');
     })
 })
 

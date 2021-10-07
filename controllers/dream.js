@@ -7,6 +7,10 @@ router.get('/dreamly', (req, res) => {
     res.render('home.ejs');
 });
 
+router.get('/dreamly/tips', (req, res) => {
+    res.render('advice.ejs');
+})
+
 // Index route
 router.get('/dreamly/logs', (req, res) => {
     dreams.find({}, (error, foundDreams) => {

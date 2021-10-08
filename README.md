@@ -6,5 +6,5 @@ Technologies used: HTML, CSS, Javascript, MongoDB, Bootstrap, Mongoose, EJS
 
 Getting started: https://dreamlyy.herokuapp.com/
 
-Next steps: Create authentication to allow users to creat their own accounts
+Next steps: Create authentication to allow users to create their own accounts, create a forum for users to communicate with each other and pass around advice to lucid dream and personal stories
 

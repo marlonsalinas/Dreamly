@@ -62,6 +62,11 @@ router.get('/dreamly/logs/:id/edit', (req, res) => {
     });
 });
 
+router.put('/dreamly/logs/:id', (req, res) => {
+    dreams[req.params.id] = req.body;
+    res.redirect('/dreamly/logs');
+})
+
 // Show route
 router.get('/dreamly/logs/:id', (req, res) => {
     dreams.findById(req.params.id, (error, foundDreams) => {

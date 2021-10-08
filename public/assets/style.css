@@ -1,3 +1,85 @@
 body {
     background-color: lightblue;
+    margin: auto;
+    font-family: 'Lemon', cursive;
 }
+
+h1 {
+    margin-top: 3em;
+}
+
+h5 {
+    font-family: 'Playfair Display', serif;
+}
+
+a {
+    color: black;
+}
+
+p {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+}
+
+hr {
+    margin-bottom: 7em;
+    color: black;
+}
+
+.form-group {
+    width: 70%;
+    font-family: 'Playfair Display', serif;
+    padding-left: 30%;
+}
+
+textarea {
+    width: 70%;
+    height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+    padding-left: 30%;
+    list-style: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+}
+
+#home-btn {
+    padding-right: 90%;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+}
+
+#create-btn {
+    font-family: 'Playfair Display', serif;
+    padding-left: 30%;
+    font-size: 22px;
+}
+
+.container {
+    text-align: center;
+}
+
+#edit-btn {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+}
+
+#back-to-entries-btn {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+}
+
+.show-page-btns {
+    padding-left: 25px;
+}
+
+.advice {
+    padding-bottom: 5em;
+}
+

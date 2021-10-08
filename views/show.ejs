@@ -6,22 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!--Bootstrap CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/assets/style.css">
     <title>Dreamly</title>
 </head>
 <body>
+    <div class="jumbotron text-center">
     <h1>Dream log</h1>
-    <div>
-    <p>Night of: <%=dreams.nightOf%></p>
-    <p>Setting: <%=dreams.setting%></p>
-    <p>Description: <%=dreams.description%></p>
-    <p>Emotions: <%=dreams.emotions%></p>
+    <a href="/dreamly" id="home-btn">Back to home</a>
+    <hr>
     </div>
-    <form action="/dreamly/logs/<%=dreams._id%>?_method=DELETE" method="POST">
-        <input type="submit" value="Delete entry">
-    </form>
-    <a href="/dreamly/logs/<%=dreams._id %>/edit">Edit entry</a>
-    <a href="/dreamly/logs">Back to entries</a>
+    <div class="container" id="dream-description">
+        <p>Night of: <%=dreams.nightOf%></p>
+        <p>Setting: <%=dreams.setting%></p>
+        <p>Emotions: <%=dreams.emotions%></p>
+        <p>Description: <%=dreams.description%></p>
+    </div>
+    <div class='show-page-btns'>
+        <a href="/dreamly/logs/<%=dreams._id %>/edit" id='edit-btn'>Edit entry</a>
+        <br>
+        <a href="/dreamly/logs" id="back-to-entries-btn">Back to entries</a>
+        <form action="/dreamly/logs/<%=dreams._id%>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete entry">
+        </form>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

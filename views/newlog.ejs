@@ -5,11 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/assets/style.css">
     <title>Dreamly</title>
 </head>
 <body>
-    <h1>Log a dream</h1>
+    <div class="jumbotron text-center">
+    <h1>Log your dream</h1>
+    <a href="/dreamly" id="home-btn">Back to home</a>
+    <hr>
+    </div>
     <form action="/dreamly/logs" method="POST">
         <div class="form-group">
             <label for="nightOfInput">Night of dream (Ex. 10/06/21)</label>
@@ -20,13 +30,13 @@
             <input type="text" class="form-control" name='setting'/><br>
         </div>
         <div class="form-group">
-            <label for="descriptionOfDream">Description of dream</label>
-            <input type='textbox' class="form-control" name='description'/><br>
-        </div>
-        <div class="form-group">
             <label for="emotionsFelt">Emotion(s) experienced</label>
             <input type='text' class="form-control" name='emotions'/><br>
-        <input type='submit' value='Log dream'/>
+        </div>
+        <div class="form-group">
+            <label for="descriptionOfDream">Description of dream</label>
+            <textarea class="form-control" name='description'></textarea><br>
+        <input type='submit' class="submit-btn" value='Create entry'/>
         </div>
     </form>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

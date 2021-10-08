@@ -24,7 +24,7 @@ app.use((req, res, next) => {
     console.log('Middleware active');
     next();
 })
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 
 //serves up static CSS files in public/assets/ folder when /public link is called in ejs files

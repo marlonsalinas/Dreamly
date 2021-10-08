@@ -35,8 +35,13 @@ router.delete('/dreamly/logs/:id', (req, res) => {
 // Update Route
 router.put('/dreamly/logs/:id', (req, res) => {
     dreams.findByIdAndUpdate(
-        req.params.id, req.body, () => {
-            res.redirect('/dreamly/logs');
+        req.params.id, 
+        req.body, 
+        {
+            new: true,
+        }, 
+        (error, updatedDream) => {
+            res.redirect(`/dreamly/logs/${req.params.id}`);
         });
 });
 
@@ -57,14 +62,14 @@ router.post('/dreamly/logs', (req, res) => {
 router.get('/dreamly/logs/:id/edit', (req, res) => {
     dreams.findById(req.params.id, (error, foundDreams) => {
         res.render('editlog.ejs', {
-            dreams: foundDreams
+            dreams: foundDreams,
         });
     });
 });
 
 router.put('/dreamly/logs/:id', (req, res) => {
-    dreams[req.params.id] = req.body;
-    res.redirect('/dreamly/logs');
+    dreams._id = req.body;
+    res.redirect('/dreamly/logs')
 })
 
 // Show route

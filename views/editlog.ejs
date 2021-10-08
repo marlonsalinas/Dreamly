@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1>Edit log</h1>
-    <form action="/dreamly/logs/<%=dreams._id%>">
+    <form action="/dreamly/logs/<%=dreams._id%>?_method=PUT" method="POST">
         <div class="form-group">
             <label for="nightOfInput">Night of dream (Ex. 10/06/21)</label>
             <input type='text' class="form-control" name='nightOf' value="<%=dreams.nightOf%>"/><br>
@@ -26,7 +26,7 @@
         <div class="form-group">
             <label for="emotionsFelt">Emotion(s) experienced</label>
             <input type='text' class="form-control" name='emotions' value="<%=dreams.emotions%>"/><br>
-        <input type='submit' value='Update dream'/>
+        <input type='submit' value='Update entry'/>
         </div>
     </form>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

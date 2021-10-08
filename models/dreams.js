@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const dreamSchema = new Schema({
     nightOf: {type: String, required: true},
     setting: {type: String, required: false},
-    description: {type: String, required: true},
+    description: {type: String, required: false},
     emotions: {type: String, required: false}
 });
 

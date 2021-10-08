@@ -3,7 +3,7 @@ const router = express.Router();
 const dreams = require('../models/dreams');
 
 // Controllers //
-router.get('/', (req, res) => {
+router.get('/dreamly', (req, res) => {
     res.render('home.ejs');
 });
 

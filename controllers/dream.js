@@ -65,7 +65,9 @@ router.get('/dreamly/logs/:id/edit', (req, res) => {
 // Show route
 router.get('/dreamly/logs/:id', (req, res) => {
     dreams.findById(req.params.id, (error, foundDreams) => {
-        res.render('show.ejs');
+        res.render('show.ejs', {
+            dreams: foundDreams
+        });
     })
 })
 

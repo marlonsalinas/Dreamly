@@ -27,6 +27,9 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
+//serves up static CSS files in public/assets/ folder when /public link is called in ejs files
+app.use('/public', express.static('public'));
+
 //Routes //
 const dreamsController = require('./controllers/dream.js');
 app.use('/', dreamsController);
